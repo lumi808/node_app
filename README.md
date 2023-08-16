@@ -12,25 +12,35 @@
 
    ```bash
    git clone <repository_url>
-   cd async-http-processing
+
 2. **Установка зависимостей:**
     Перейдите в папку микросервиса M1 и установите зависимости:
+
+    ```bash
     cd m1
     npm install
 
     Перейдите в папку микросервиса M2 и установите зависимости:
+
+    ```bash
     cd ../m2
     npm instal
+
 3. **Настройка RabbitMQ:**
     Установка и запуск RabbitMQ:
     Если вы ещё не установили RabbitMQ, вы можете воспользоваться Homebrew на macOS:
+
+    ```bash
     brew install rabbitmq
 
     Запустите RabbitMQ как фоновый сервис:
+
+    ```bash
     brew services start rabbitmq
     
     или
 
+    ```bash
     CONF_ENV_FILE="/usr/local/etc/rabbitmq/rabbitmq-env.conf" /usr/local/opt/rabbitmq/sbin/rabbitmq-server
 
     Доступ к консоли управления RabbitMQ:
@@ -39,15 +49,21 @@
 4. **Запуск микросервисов**
     Запуск микросервиса M1:
     В папке m1 выполните:
+
+    ```bash
     node m1.js
 
     Микросервис M1 начнёт работу.
 
     Запуск микросервиса M2:
     В папке m2 выполните:
+
+    ```bash
     node m2.js
 
     Микросервис M2 начнёт работу.
 5. **Тестирование и мониторинг**
     Откройте новое окно терминала и отправьте POST-запрос к микросервису M1:
+
+    ```bash
     curl -X POST -H "Content-Type: application/json" -d '{"requestData": "Data to Process"}' http://127.0.0.1:3000/process
